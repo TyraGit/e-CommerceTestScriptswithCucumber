@@ -50,7 +50,7 @@ public class DownloadInvoiceStepDefinition extends BaseTest {
 	public void verify_the_invoice_a_csv_file() throws InterruptedException, IOException {
 		
 		// Wait for the download to complete
-        Thread.sleep(8000); // Adjust the sleep time as necessary
+        Thread.sleep(10000); // Adjust the sleep time as necessary
         
         // Verify the file download dynamically
         String downloadDirPath = Paths.get(System.getProperty("user.dir"), "Downloads").toString();

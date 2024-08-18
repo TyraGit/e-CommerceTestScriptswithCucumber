@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import athirahrahmat.Utils.BaseTest;
 import athirahrahmat.Utils.CredentialPropertiesReader;
 import io.cucumber.java.Before;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -16,12 +15,6 @@ public class LoginStepDefinition extends BaseTest {
         if (driver == null) {
             invokeBrowser();  //initialize the browser if it's not already done
         }
-    }
-
-	@Given("User is on landing page")
-    public void user_on_landing_page() {
-        driver.get(url);
-        
     }
 
     @When("User login to application with correct credential")

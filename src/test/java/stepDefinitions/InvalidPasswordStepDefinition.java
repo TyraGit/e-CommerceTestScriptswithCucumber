@@ -1,17 +1,10 @@
 package stepDefinitions;
 
-import java.time.Duration;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import athirahrahmat.Utils.BaseTest;
 import athirahrahmat.Utils.CredentialPropertiesReader;
 import io.cucumber.java.Before;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class InvalidPasswordStepDefinition extends BaseTest {
@@ -21,12 +14,6 @@ public class InvalidPasswordStepDefinition extends BaseTest {
         if (driver == null) {
             invokeBrowser();  //initialize the browser if it's not already done
         }
-    }
-
-	@Given("User is on landing page")
-    public void user_on_landing_page() {
-        driver.get(url);
-        
     }
 	
 	@When("User login to application with incorrect password")
@@ -39,19 +26,6 @@ public class InvalidPasswordStepDefinition extends BaseTest {
         driver.findElement(By.id("userEmail")).sendKeys(wrongUsername);
         driver.findElement(By.id("userPassword")).sendKeys(wrongPassword);
         driver.findElement(By.id("login")).click();
-	}
-	
-	@Then("Error message toaster should display")
-	public void error_toaster_should_display() {
-		
-		// Add explicit wait for the error message to be displayed
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement errorToaster = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".toast-error")));
-        String errorMessage = errorToaster.getText();
-        System.out.println("Toaster message: " + errorMessage);
-        
-        driver.findElement(By.id("userEmail")).clear();
-        driver.findElement(By.id("userPassword")).clear();
 	}
 
 }
