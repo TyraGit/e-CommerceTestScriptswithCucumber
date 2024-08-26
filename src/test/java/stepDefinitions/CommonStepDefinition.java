@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import athirahrahmat.Utils.BaseTest;
+import athirahrahmat.Utils.HomePage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
@@ -18,12 +19,27 @@ public class CommonStepDefinition extends BaseTest {
 //this class can have multiple Given, When and Then
 	
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	HomePage homePage = new HomePage(driver);
 	
 	@Given("User is on landing page")
     public void user_on_landing_page() {
         driver.get(url);
         
     }
+	
+	@Given("User is on the Home page")
+	public void user_is_on_home_page() {
+		
+		// Navigate to Home page if not already there
+        homePage.goToHomePage();
+	}
+	
+	@Then("Home page should refresh")
+	public void home_page_should_refresh() {
+		
+		// Wait for the search results to load
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".container")));
+	}
 	
 	@Then("Error message toaster should display")
 	public void error_toaster_should_display() {

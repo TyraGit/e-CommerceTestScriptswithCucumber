@@ -6,6 +6,22 @@ Given User is on landing page
 When User login to application with correct credential
 Then User should be on the Home page
 
+@SearchBox
+Scenario: Search product
+Given User is on the Home page
+When User keys in search box and press Enter
+Then Home page should refresh
+And Verify product is showing on home page
+And Clear Search field
+
+@FilterbyCategories
+Scenario: Filter product
+Given User is on the Home page
+When User clicks on Electronic checkbox
+Then Home page should refresh
+And Verify products are showing based on the selected filter
+And Untick Electronic checkbox
+
 @AddtoCart
 Scenario: Add one product to cart
 Given User selects a product and clicks Add to Cart
